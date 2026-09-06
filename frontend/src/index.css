@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-900: #0a0e14;
+  --color-ink-800: #121822;
+  --color-ink-700: #1a2330;
+  --color-ink-600: #273445;
+
+  --color-linen-50: #fcfbfa;
+  --color-linen-100: #f6f3ee;
+  --color-linen-200: #ebe5dc;
+
+  --color-brass-400: #e2c179;
+  --color-brass-500: #d4af37;
+  --color-brass-600: #b5952f;
+
+  --color-wine-600: #5c1822;
+  --color-wine-700: #451219;
+
+  --animate-shimmer: shimmer 2s infinite linear;
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  --animate-kenburns: kenburns 20s ease-in-out infinite alternate;
+  @keyframes kenburns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(-1%, -1%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background-color: var(--color-linen-50);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background-color: var(--color-brass-400);
+  color: var(--color-ink-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass-600);
+  outline-offset: 2px;
+}
