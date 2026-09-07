@@ -5,6 +5,7 @@ from app.core.config import settings
 from app.core.database import Base, engine, SessionLocal
 from app.core.security import hash_password
 import app.models  # noqa: F401 - registers all tables on Base.metadata
+import sqlalchemy.exc
 
 from app.models.core import User
 from app.models.enums import UserRole, UserStatus
@@ -53,6 +54,9 @@ def on_startup():
             )
             db.add(admin)
             db.commit()
+    except (sqlalchemy.exc.OperationalError, sqlalchemy.exc.ProgrammingError):
+        # Database tables might not be created yet, so skip seeding.
+        pass
     finally:
         db.close()
 
